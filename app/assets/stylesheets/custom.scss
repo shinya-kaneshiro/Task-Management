@@ -69,6 +69,19 @@ p {
   text-decoration: none;
 }
 
+#header {
+  background-color: teal;
+}
+
+#header-list {
+  color: #fff;
+  font-weight: bold;
+}
+
+#header-list:hover {
+  color: darkgray;
+}
+
 /* デバッグウインドウ */
 
 .debug_dump {
@@ -96,10 +109,4 @@ p {
   .form-control {
     color: $state-danger-text;
   }
-}
-
-/* header */
-
-#header {
-  background-color: teal;
 }
