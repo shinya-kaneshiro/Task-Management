@@ -28,6 +28,21 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
   
+  def update
+    @task = Task.find(params[:id])
+    if @task.update_attributes(task_params)
+      flash[:success] = "タスクを更新しました。"
+      render :edit
+      # 今後、タスク詳細ページへリダイレクトする。
+    else
+      # 最終的に「何件のエラーがあります」とかにするけど、とりま。
+      flash[:danger] = "編集失敗。"
+      render :edit
+    end
+  end
+    
+    
+  
   private
     
     def task_params

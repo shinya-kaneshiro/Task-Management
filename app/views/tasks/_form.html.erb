@@ -8,7 +8,7 @@
   
   <%= f.submit yield(:button_text), class: "btn btn-#{yield(:button_size)} btn-primary btn-form" %>
   <% if controller.action_name == "edit" %>
-    <%= link_to "キャンセル", '#', class: "btn btn-md btn-default btn-form" %>
+    <%= link_to "キャンセル", user_tasks_path, class: "btn btn-md btn-default btn-form" %>
   <% end %>
 
 <% end %>
