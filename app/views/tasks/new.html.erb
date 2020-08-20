@@ -3,8 +3,8 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_with(url: user_tasks_path, method: :post, local: true) do |f| %>
-      
+    <%= form_with(model:[@user, @task], local: true) do |f| %>
+
       <%= f.label :name, class: "label-name" %>
       <%= f.text_field :name, class: "form-control" %>
 
