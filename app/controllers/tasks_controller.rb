@@ -13,7 +13,9 @@ class TasksController < ApplicationController
       flash[:success] = "タスクを新規作成しました。"
       redirect_to user_tasks_path
     else
-      # 失敗時の処理
+      # 最終的に「何件のエラーがあります」とかにするけど、とりま。
+      flash[:danger] = "失敗です。"
+      render :new
     end
   end
   
