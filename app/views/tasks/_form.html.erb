@@ -1,0 +1,14 @@
+<%= form_with(model:[@user, @task], local: true) do |f| %>
+
+  <%= f.label :name, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :description, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_area :description, rows: 5, class: "form-control" %>
+  
+  <%= f.submit yield(:button_text), class: "btn btn-#{yield(:button_size)} btn-primary btn-form" %>
+  <% if controller.action_name == "edit" %>
+    <%= link_to "キャンセル", '#', class: "btn btn-md btn-default btn-form" %>
+  <% end %>
+
+<% end %>

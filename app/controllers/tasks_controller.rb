@@ -23,6 +23,11 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
   
+  def edit
+    @user = User.find(params[:user_id])
+    @task = Task.find(params[:id])
+  end
+  
   private
     
     def task_params
