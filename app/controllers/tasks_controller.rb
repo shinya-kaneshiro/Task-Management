@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
   before_action :set_user_id
   
-  def new
-    @user = User.find(params[:user_id])
-    @task = Task.new
+
+  def index
+    @tasks = Task.all
   end
   
   def create
@@ -18,13 +18,18 @@ class TasksController < ApplicationController
       render :new
     end
   end
-  
-  def index
-    @tasks = Task.all
+
+  def new
+    @user = User.find(params[:user_id])
+    @task = Task.new
   end
-  
+
   def edit
     @user = User.find(params[:user_id])
+    @task = Task.find(params[:id])
+  end
+  
+  def show
     @task = Task.find(params[:id])
   end
   
