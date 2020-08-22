@@ -1,18 +1,11 @@
 <% provide(:title, "New Task") %>
+<% provide(:class_text, 'NewTask') %>
+<% provide(:button_text, '新規登録') %>
+<% provide(:button_size, 'lg') %>
 <h1>タスク新規作成</h1>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_with(model:[@user, @task], local: true) do |f| %>
-
-      <%= f.label :name, class: "label-name" %>
-      <%= f.text_field :name, class: "form-control" %>
-
-      <%= f.label :description, class: "label-description" %>
-      <%= f.text_area :description, rows: 5, class: "form-control" %>
-      
-      <%= f.submit "新規登録", class: "btn btn-lg btn-primary btn-form" %>
-    
-    <% end %>
+    <%= render 'form' %>
   </div>
 </div>

@@ -13,8 +13,6 @@ class TasksController < ApplicationController
       flash[:success] = "タスクを新規作成しました。"
       redirect_to user_tasks_path
     else
-      # 最終的に「何件のエラーがあります」とかにするけど、とりま。
-      flash[:danger] = "失敗です。"
       render :new
     end
   end
@@ -40,8 +38,6 @@ class TasksController < ApplicationController
       render :edit
       # 今後、タスク詳細ページへリダイレクトする。
     else
-      # 最終的に「何件のエラーがあります」とかにするけど、とりま。
-      flash[:danger] = "編集失敗。"
       render :edit
     end
   end
