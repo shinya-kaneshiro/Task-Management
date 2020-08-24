@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_user_id
-  
+  before_action :logged_in_user
+  before_action :correct_user
+
 
   def index
     @tasks = Task.where(user_id: current_user.id)
@@ -48,6 +50,15 @@ class TasksController < ApplicationController
     flash[:success] = "タスクを削除しました。"
     redirect_to user_tasks_path
   end
+  
+  # beforeフィルター
+  
+  # 本人確認(アクセスユーザとcurrent_userのオブジェクトを比較)
+  def correct_user
+    @user = User.find(params[:user_id])
+    redirect_to root_url unless current_user?(@user)
+  end  
+
   
   private
     
