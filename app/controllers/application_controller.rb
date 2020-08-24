@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
     @user = User.find(params[:user_id])
   end
   
+  def logged_in_user
+    unless logged_in?
+      # store_location
+      # store_locationメソッドは実装しないかも。GETリクエストだったら記憶するやつね。
+      flash[:danger] = "ログインしてください。"
+      redirect_to login_url
+    end
+  end
 end
