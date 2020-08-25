@@ -5,7 +5,7 @@ class TasksController < ApplicationController
 
 
   def index
-    @tasks = Task.where(user_id: current_user.id)
+    @tasks = Task.where(user_id: current_user.id).order(created_at: :desc)
   end
   
   def create
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       flash[:success] = "タスクを更新しました。"
-      render :edit
+      redirect_to user_task_path
       # 今後、タスク詳細ページへリダイレクトする。
     else
       render :edit
@@ -56,7 +56,10 @@ class TasksController < ApplicationController
   # 本人確認(アクセスユーザとcurrent_userのオブジェクトを比較)
   def correct_user
     @user = User.find(params[:user_id])
-    redirect_to root_url unless current_user?(@user)
+    if !current_user?(@user)
+      flash[:danger] = "権限がありません。"
+      redirect_to root_url
+    end
   end  
 
   

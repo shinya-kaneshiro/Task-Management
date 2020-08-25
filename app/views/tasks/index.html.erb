@@ -4,7 +4,6 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <%= link_to 'タスク新規作成', new_user_task_path, class: "btn btn-lg btn-primary pull-right" %>
-  </div>
     <table class="table table-hover" id="table-tasks">
       <thead>
         <tr>
@@ -16,8 +15,8 @@
       <tbody>
         <% @tasks.each do |task| %>
           <tr>
-            <td><%= link_to task.name, user_task_path(current_user, task.id) %></td>
-            <td><%= task.created_at %></td>
+            <td><%= link_to task.name, user_task_path(current_user, task.id), ID: "task-name" %></td>
+            <td><%= l(task.created_at, format: :long) %></td>
             <td>
               <%= link_to "編集", edit_user_task_path(current_user, task.id), class: "btn btn-success" %>
               <%= link_to "削除", user_task_path(current_user, task.id), method: :delete, data: { confirm: "「#{task.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
@@ -26,4 +25,5 @@
         <% end %>
       </tbody>
     </table>
+  </div>
 </div>

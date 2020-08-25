@@ -11,8 +11,12 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    if logged_in? && !current_user.admin?
+      flash[:info] = "すでにログインしています。"
+      redirect_to user_path(current_user)
+    end
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
